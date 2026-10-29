@@ -2,13 +2,42 @@
 // Allows filtering tasks by status and priority
 
 // Imports
-import type { TaskStatus } from '../../types/index';
-import type { TaskFilterProps } from '../../types/index';
+import { useState } from 'react';
+import type { TaskStatus, TaskFilterProps } from '../../types/index';
 
 // Function Component
-export default function TaskFilter() {
+export default function TaskFilter({ onFilterChange }: TaskFilterProps) {
+    // useState
     
-    return (
+    function handleStatusChange() {
 
+    };
+
+    function handlePriorityChange() {
+
+    };
+
+    return (
+        <div className="task-filter">
+            <label>
+                Status:
+                <select defaultValue="" onChange={(handleStatusChange)}>
+                    <option value="">All Statuses</option>
+                    <option value="pending">Pending</option>
+                    <option value="in-progress">In Progress</option>
+                    <option value="completed">Completed</option>
+                </select>
+            </label>
+
+            <label>
+                Priority:
+                <select defaultValue="" onChange={handlePriorityChange}>
+                    <option value="">All Priorities</option>
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                </select>
+            </label>
+        </div>
     )
 };
