@@ -18,21 +18,25 @@ const initialTasks: Task[] = [
 // Function Component
 export default function TaskList() {
     
+    // useState
     const [tasks, setTasks] = useState<Task[]>(initialTasks);
+    const [filters, setFilters] = useState<{ status?: TaskStatus; priority?: Task['priority'] }>({});
 
     // Closure to TaskItem
     function onStatusChange( taskId: string, newStatus: TaskStatus ) {
-
+        // Updates only the selected task
+        setTasks(prev => prev.map(task => task.id === taskId ? {...task, status: newStatus }: task))
     };
 
     // Closure to TaskItem
     function onDelete( taskId: string ) {
+        // Set for a new array to be created if a task is deleted
         setTasks(prev => prev.filter(task => task.id !== taskId));
     };
 
     // CLosure to TaskFilter
-    function onFilterChange() {
-
+    function onFilterChange( newFilters: {status?: TaskStatus; priority?: Task['priority'];}) {
+        setFilters(newFilters);
     };
 
     return (
