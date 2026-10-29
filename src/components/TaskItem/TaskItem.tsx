@@ -12,8 +12,8 @@ export default function TaskItem( {
 }: TaskItemProps ) {
     
     // Callback functions
-    function handleStatusChange() {
-        
+    function handleStatusChange(e: React.ChangeEvent<HTMLSelectElement>) {
+        onStatusChange(task.id, e.target.value as TaskStatus )
     }
 
     function handleDelete() {
