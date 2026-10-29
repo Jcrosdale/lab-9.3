@@ -2,17 +2,50 @@
 // Displays individual task information.
 
 // Imports
-import type { TaskItemProps } from '../../types';
-import type { Task } from '../../types';
+import type { TaskItemProps, TaskStatus } from '../../types';
 
 // Function Component
 export default function TaskItem( { 
     task,
     onStatusChange,
     onDelete
-} ) {
+}: TaskItemProps ) {
     
-    return (
+    // Callback functions
+    function handleStatusChange() {
+        
+    }
 
-    )
+    function handleDelete() {
+        onDelete(task.id);
+    }
+
+    return (
+        <div>
+            <h3>{task.title}</h3>
+            <p>{task.description}</p>
+
+            <label>
+                Status:
+                <select value={task.status} onChange={handleStatusChange}>
+                    <option value="pending">Pending</option>
+                    <option value="in-progress">In Progress</option>
+                    <option value="completed">Completed</option>
+                </select>
+            </label>
+
+            <button type="button" onClick={handleDelete}>
+                Delete
+            </button>
+
+            <p>
+                <h2>Priority:</h2> {task.priority}
+            </p>
+
+            <p>
+                <h2>Due:</h2> {task.dueDate}
+            </p>
+        </div>
+
+    );
 };
