@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import TaskList from './components/TaskList/TaskList';
 import type { Task, TaskStatus } from './types';
+import './App.css'
 
 // Initial (Sample) Tasks
 const initialTasks: Task[] = [

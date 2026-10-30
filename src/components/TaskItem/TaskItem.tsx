@@ -21,7 +21,7 @@ export default function TaskItem( {
     }
 
     return (
-        <div>
+        <div className={`task-item status-${task.status} priority-${task.priority}`}>
             <h3>{task.title}</h3>
             <p>{task.description}</p>
 
