@@ -20,15 +20,20 @@ export default function TaskFilter({ onFilterChange }: TaskFilterProps) {
         });
     };
 
-    function handlePriorityChange() {
-
+    function handlePriorityChange(e: React.ChangeEvent<HTMLSelectElement>) {
+        const newPriority = e.target.value as Task['priority'] | '';
+        setPriority(newPriority);
+        onFilterChange({
+            status: status || undefined,
+            priority: newPriority || undefined
+        });
     };
 
     return (
         <div className="task-filter">
             <label>
                 Status:
-                <select defaultValue="" onChange={(handleStatusChange)}>
+                <select value={status} onChange={(handleStatusChange)}>
                     <option value="">All Statuses</option>
                     <option value="pending">Pending</option>
                     <option value="in-progress">In Progress</option>
@@ -38,7 +43,7 @@ export default function TaskFilter({ onFilterChange }: TaskFilterProps) {
 
             <label>
                 Priority:
-                <select defaultValue="" onChange={handlePriorityChange}>
+                <select value={priority} onChange={handlePriorityChange}>
                     <option value="">All Priorities</option>
                     <option value="low">Low</option>
                     <option value="medium">Medium</option>

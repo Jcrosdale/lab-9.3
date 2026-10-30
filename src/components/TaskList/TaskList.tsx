@@ -34,7 +34,7 @@ export default function TaskList({ tasks, onStatusChange, onDelete }: TaskListPr
             ) : (
                 visibleTasks.map(task => (
             <TaskItem
-                key={tasks.id}
+                key={task.id}
                 task={task}
                 onStatusChange={onStatusChange}
                 onDelete={onDelete}
