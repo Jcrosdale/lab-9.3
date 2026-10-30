@@ -3,14 +3,21 @@
 
 // Imports
 import { useState } from 'react';
-import type { TaskStatus, TaskFilterProps } from '../../types/index';
+import type { TaskStatus, TaskFilterProps, Task } from '../../types/index';
 
 // Function Component
 export default function TaskFilter({ onFilterChange }: TaskFilterProps) {
     // useState
+    const [status, setStatus] = useState<TaskStatus | ''>('');
+    const [priority, setPriority] = useState<Task['priority'] | ''>('');
     
-    function handleStatusChange() {
-
+    function handleStatusChange(e: React.ChangeEvent<HTMLSelectElement>) {
+        const newStatus = e.target.value as TaskStatus | '';
+        setStatus(newStatus);
+        onFilterChange({
+            status: newStatus || undefined,
+            priority: priority || undefined
+        });
     };
 
     function handlePriorityChange() {
